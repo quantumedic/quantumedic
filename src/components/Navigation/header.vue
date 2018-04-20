@@ -4,13 +4,17 @@
 			<div class='col-xs-6'>
 				<router-link :to='{name: "home"}'>Handbook</router-link>
 			</div>
-			<div class='col-xs-6 text-right small'>
-				<router-link v-if='ifLogged' :to='{name: "account", params: {tab: "profile"}}'>
+			<div class='col-xs-6 text-right small navbar-menu' v-if='ifLogged'>
+				<router-link :to='{name: "account", params: {tab: "profile"}}'>
 					<i class='fa fa-user-circle-o'/>
-					{{user_info.username}}&nbsp;&nbsp;
+					{{user_info.username}}
 				</router-link>
-				<a @click='logout' v-if='ifLogged'>退出</a>
-				<router-link :to='{name: "account", params: {tab: "login"}}' v-else>
+				<a href="">收藏</a>
+				<a href="">我的贡献</a>
+				<a @click='logout'>退出</a>
+			</div>
+			<div class='col-xs-6 text-right small navbar-menu' v-else>
+				<router-link :to='{name: "account", params: {tab: "login"}}'>
 					登录/注册
 				</router-link>
 			</div>
@@ -58,5 +62,8 @@
 	.handbook-header {
 		padding-top: 10px;
 		padding-bottom: 10px;
+		.navbar-menu a {
+			margin-left: 10px;
+		}
 	}
 </style>

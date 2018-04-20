@@ -6,7 +6,8 @@
 		<hr>
 		<profile-form :info='info'/>
 		<p class='small'>
-			让我更好的了解你
+			想成为手册的贡献者？点击
+			<a>了解更多</a>
 		</p>
 		<done-button :info='info'/>
 	</div>
