@@ -25,6 +25,11 @@ export default new Router({
 	routes: [
 		{
 			path: '/',
+			name: 'home',
+			component: resolve => require(['@/pages/index/index.vue'], resolve),
+		},
+		{
+			path: '/account/:tab',
 			name: 'account',
 			component: resolve => require(['@/pages/account/index.vue'], resolve),
 		}
