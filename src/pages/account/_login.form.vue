@@ -1,8 +1,9 @@
 <template>
 	<div>
-		<h2>
+		<h2 class='text-center'>
 			登录
 		</h2>
+		<hr>
 		<login-form :info='info'/>
 		<p class='small'>
 			没有账号？点击
@@ -15,13 +16,15 @@
 </template>
 
 <script>
+	import {clone} from '@/model'
+	import {USER_SIGNIN_FORM} from '@/model/auth.model'
 	import LoginForm from '@/components/Account/form/auth'
 	import LoginButton from '@/components/Account/operation/signin'
 
 	export default {
 		data () {
 			return {
-				info: { email: '', password: '' }
+				info: clone(USER_SIGNIN_FORM)
 			}
 		},
 		components: {

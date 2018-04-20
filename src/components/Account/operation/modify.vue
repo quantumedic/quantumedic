@@ -1,6 +1,6 @@
 <template>
 	<h2 class='text-right text-info'>
-		<button class='btn-clean' @click.prevent='register' :disabled='submitting'>
+		<button class='btn-clean' @click.prevent='update' :disabled='updating'>
 			<i class='fa fa-arrow-circle-right pointer'/>
 		</button>
 	</h2>
@@ -13,19 +13,19 @@
 		props: ['info'],
 		computed: {
 			...mapState({
-				submitting: state => state.AuthModule.submitting
+				updating: state => state.AccountModule.updating
 			})
 		},
 		methods: {
 			...mapActions({
-				signup: 'signup'
+				updateAccount: 'updateAccount'
 			}),
-			register: function () {
+			update: function () {
 				const that = this
-				this.signup({
+				this.updateAccount({
 					info: this.info,
 					success: function () {
-						that.$router.push({name: 'account', params: {tab: 'profile'}})
+						that.$router.push({name: 'home'})
 					}
 				})
 			}

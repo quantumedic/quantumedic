@@ -26,8 +26,9 @@ const signin = ({commit}, {info, success}) => {
 	setAuth(api.getUserAuth(info), commit, success)
 }
 
-const signout = ({commit}) => {
+const signout = ({commit}, success) => {
 	commit(auth.ACCOUNT_SIGN_OUT)
+	if (success) success()
 }
 
 export default {

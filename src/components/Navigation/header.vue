@@ -5,11 +5,11 @@
 				<router-link :to='{name: "home"}'>Handbook</router-link>
 			</div>
 			<div class='col-xs-6 text-right small'>
-				<a v-if='ifLogged'>
+				<router-link v-if='ifLogged' :to='{name: "account", params: {tab: "profile"}}'>
 					<i class='fa fa-user-circle-o'/>
 					{{user_info.username}}&nbsp;&nbsp;
-				</a>
-				<a @click='signout' v-if='ifLogged'>退出</a>
+				</router-link>
+				<a @click='logout' v-if='ifLogged'>退出</a>
 				<router-link :to='{name: "account", params: {tab: "login"}}' v-else>
 					登录/注册
 				</router-link>
@@ -33,6 +33,12 @@
 				getAccount: 'getAccount',
 				signout: 'signout'
 			}),
+			logout: function () {
+				const that = this
+				this.signout(() => {
+					that.$router.push({name: 'home'})
+				})
+			},
 			init: function () {
 				if (this.ifLogged) {
 					this.getAccount()
