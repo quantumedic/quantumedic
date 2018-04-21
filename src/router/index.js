@@ -37,6 +37,11 @@ export default new Router({
 			path: '/edit/:id',
 			name: 'edit',
 			component: resolve => require(['@/pages/edit/index.vue'], resolve)
+		},
+		{
+			path: '/doc/:id',
+			name: 'doc',
+			component: resolve => require(['@/pages/doc/index.vue'], resolve)
 		}
 	]
 })

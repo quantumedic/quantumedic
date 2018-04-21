@@ -16,7 +16,6 @@
 			editor.customConfig.menus = [
 				'head',
 				'bold',
-				'fontName',
 				'italic',
 				'underline',
 				'strikeThrough',
