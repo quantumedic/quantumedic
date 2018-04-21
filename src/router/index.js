@@ -26,12 +26,17 @@ export default new Router({
 		{
 			path: '/',
 			name: 'home',
-			component: resolve => require(['@/pages/index/index.vue'], resolve),
+			component: resolve => require(['@/pages/index/index.vue'], resolve)
 		},
 		{
 			path: '/account/:tab',
 			name: 'account',
-			component: resolve => require(['@/pages/account/index.vue'], resolve),
+			component: resolve => require(['@/pages/account/index.vue'], resolve)
+		},
+		{
+			path: '/edit/:id',
+			name: 'edit',
+			component: resolve => require(['@/pages/edit/index.vue'], resolve)
 		}
 	]
 })
