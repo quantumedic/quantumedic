@@ -14,7 +14,6 @@
 		props: ['article'],
 		mounted () {
 			editor.customConfig.menus = [
-				'head',
 				'bold',
 				'italic',
 				'underline',
@@ -35,3 +34,9 @@
 		}
 	}
 </script>
+
+<style lang='less' scoped>
+	.w-e-text-container {
+		height: 500px !important;
+	}
+</style>
