@@ -1,5 +1,5 @@
 <template>
-	<h2 class='text-right text-info'>
+	<h2 class='text-right text-primary'>
 		<button class='btn-clean' @click.prevent='update' :disabled='updating'>
 			<i class='fa fa-arrow-circle-right pointer'/>
 		</button>

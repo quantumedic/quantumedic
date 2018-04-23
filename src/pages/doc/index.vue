@@ -1,20 +1,15 @@
 <template>
 	<div class='panel'>
 		<div class='panel-body'>
-			<h3>{{article_detail.title}}</h3>
-			<p>
-				{{article_detail.abstract}}
-			</p>
-			<hr>
-			<div v-html='article_detail.content'></div>
-			<hr>
-			<div class='text-right small'>
-				<p v-for='refer in article_detail.reference'>
-					<em>{{refer}}</em>
-				</p>
-				<p>
-					{{article_detail.update_time}}
-				</p>
+			<article-tags :article='article_detail'/>
+			<hr style="margin-top: 10px">
+			<div class='row'>
+				<div class='col-lg-3 bg-silver'>
+					<article-intro :article='article_detail'/>
+				</div>
+				<div class='col-lg-8 col-lg-offset-1'>
+					<article-main :article='article_detail'/>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -22,8 +17,16 @@
 
 <script>
 	import {mapState, mapActions} from 'vuex'
+	import ArticleTags from './_tag'
+	import ArticleIntro from './_intro'
+	import ArticleMain from './_main'
 
 	export default {
+		components: {
+			ArticleTags,
+			ArticleIntro,
+			ArticleMain
+		},
 		computed: {
 			...mapState({
 				requesting: state => state.ArticleModule.requesting,

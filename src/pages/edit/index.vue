@@ -1,6 +1,10 @@
 <template>
 	<div>
 		<div v-if='!requesting && !article_unexistance'>
+			<router-link :to='{name: "doc", params: {id: $route.params.id}}' target='_blank'>
+				查看文档
+			</router-link>
+			<br>
 			<article-intro :article='article'/>
 			<hr>
 			<article-content :article='article'/>
