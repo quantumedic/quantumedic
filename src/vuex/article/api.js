@@ -1,5 +1,6 @@
 import {
-	ArticleResource
+	ArticleResource,
+	TagResource
 } from '../interface'
 
 export default {
@@ -11,5 +12,8 @@ export default {
 	},
 	createArticle: tag => {
 		return ArticleResource().post('', {tag_id: tag})
+	},
+	getArticleTags: (level, ids) => {
+		return TagResource().get('/list', {params: {level: level, ids: ids}})
 	}
 }

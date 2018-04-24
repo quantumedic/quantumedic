@@ -7,7 +7,7 @@
 				<article-content :article='article'/>
 			</div>
 			<div class='col-lg-4'>
-				<article-tags :selected='selected' :tags='tag_list'/>
+				<article-tags :selects='select_tag' :tags='tag_list'/>
 			</div>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
 		},
 		data () {
 			return {
-				selected: [],
+				select_tag: { selected: [] },
 				article: clone(ARTICLE_MODEL)
 			}
 		},
@@ -43,7 +43,8 @@
 		},
 		methods: {
 			...mapActions({
-				getArticleDetail: 'getArticleDetail'
+				getArticleDetail: 'getArticleDetail',
+				getArticleTags: 'getArticleTags'
 			}),
 			sync: function () {
 				for (let prop in this.article) {
@@ -51,8 +52,33 @@
 						? this.article[prop] = this.article_detail.draft
 						: this.article[prop] = this.article_detail[prop]
 				}
-				this.selected = this.article_detail.tags.map(tag => {
+				this.select_tag.selected = this.article_detail.tags.map(tag => {
 					return tag.id
+				})
+				// this.getTags()
+			},
+			check: function (id) {
+				const that = this
+				let exist = false
+				this.tag_list.forEach(group => {
+					if (group) {
+						group.forEach(tag => {
+							if (id == tag.id) exist = true
+						})
+					}
+				})
+				return exist
+			},
+			getTags: function () {
+				const that = this
+				this.getArticleTags({
+					level: this.tag_list.length + 1,
+					ids: this.select_tag.selected.join(','),
+					success: function () {
+						that.select_tag.selected.forEach((id, index) => {
+							if (!that.check(id)) that.select_tag.selected.splice(index, 1)
+						})
+					}
 				})
 			},
 			fetch: function () {
@@ -70,7 +96,13 @@
 			this.fetch()
 		},
 		watch: {
-			'$route': 'fetch'
+			'$route': 'fetch',
+			'select_tag.selected': {
+				deep: true,
+				handler: function () {
+					this.getTags()
+				}
+			}
 		}
 	}
 </script>

@@ -40,10 +40,26 @@ const editArticleInfo = ({commit}, {info, success}) => {
 	})
 }
 
+const getArticleTags = ({commit}, {level, ids, success}) => {
+	api.getArticleTags(level, ids).then(res => {
+		let list = res.data.result
+		commit(article.REQUESTING_ARITCLE_TAGS, {
+			level: level,
+			list: list
+		})
+		if (success) success()
+	}, err => {
+		commit(article.REQUESTING_ARITCLE_TAGS_FAIL, {
+			err: err
+		})
+	})
+}
+
 export default {
 	actions: {
 		createNewArticle,
 		getArticleDetail,
-		editArticleInfo
+		editArticleInfo,
+		getArticleTags
 	}
 }

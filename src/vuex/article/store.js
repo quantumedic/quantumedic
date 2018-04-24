@@ -4,7 +4,9 @@ import {
 	REQUESTING_ARITCLE_FAIL,
 	EDITING_ARTICLE,
 	EDITING_ARTICLE_SUCCESS,
-	EDITING_ARTICLE_FAIL
+	EDITING_ARTICLE_FAIL,
+	REQUESTING_ARITCLE_TAGS,
+	REQUESTING_ARITCLE_TAGS_FAIL
 } from './type'
 
 const state = {
@@ -43,6 +45,18 @@ const mutations = {
 	},
 	[EDITING_ARTICLE_FAIL] (state, action) {
 		state.editing = false
+	},
+	[REQUESTING_ARITCLE_TAGS] (state, action) {
+		let _list = []
+		action.list.forEach(tag => {
+			_list[tag.level - 1]
+				? _list[tag.level - 1].push(tag)
+				: _list[tag.level - 1] = [tag]
+		})
+		state.tag_list = Object.assign([], _list)
+	},
+	[REQUESTING_ARITCLE_TAGS_FAIL] (state, action) {
+		console.log(action.err)
 	}
 }
 
