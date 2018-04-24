@@ -7,7 +7,7 @@
 		</p>
 		<p class='text-muted'>
 			<i class='fa fa-clock-o'></i>&nbsp;
-			{{article.update_time}}
+			{{$route.query.preview ? article.draft_time : article.update_time}}
 		</p>
 	</div>
 </template>

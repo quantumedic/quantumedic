@@ -11,6 +11,7 @@ const state = {
 	requesting: false,
 	article_unexistance: false,
 	article_detail: {},
+	tag_list: [],
 	editing: false
 }
 
@@ -21,6 +22,11 @@ const mutations = {
 	},
 	[REQUESTING_ARITCLE_SUCCESS] (state, action) {
 		state.article_detail = action.detail
+		state.article_detail.tags.forEach(tag => {
+			state.tag_list[tag.level - 1]
+				? state.tag_list[tag.level - 1].push(tag)
+				: state.tag_list[tag.level - 1] = [tag]
+		})
 		state.requesting = false
 		state.article_unexistance = false
 	},

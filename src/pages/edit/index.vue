@@ -1,13 +1,14 @@
 <template>
 	<div>
-		<div v-if='!requesting && !article_unexistance'>
-			<router-link :to='{name: "doc", params: {id: $route.params.id}}' target='_blank'>
-				查看文档
-			</router-link>
-			<br>
-			<article-intro :article='article'/>
-			<hr>
-			<article-content :article='article'/>
+		<div class='row' v-if='!requesting && !article_unexistance'>
+			<div class='col-lg-8'>
+				<article-intro :article='article'/>
+				<hr>
+				<article-content :article='article'/>
+			</div>
+			<div class='col-lg-4'>
+				<article-tags :selected='selected' :tags='tag_list'/>
+			</div>
 		</div>
 	</div>
 </template>
@@ -18,14 +19,17 @@
 	import {ARTICLE_MODEL} from '@/model/article.model'
 	import ArticleIntro from './_intro'
 	import ArticleContent from './_content'
+	import ArticleTags from './_tags'
 
 	export default {
 		components: {
 			ArticleIntro,
-			ArticleContent
+			ArticleContent,
+			ArticleTags
 		},
 		data () {
 			return {
+				selected: [],
 				article: clone(ARTICLE_MODEL)
 			}
 		},
@@ -33,7 +37,8 @@
 			...mapState({
 				requesting: state => state.ArticleModule.requesting,
 				article_unexistance: state => state.ArticleModule.article_unexistance,
-				article_detail: state => state.ArticleModule.article_detail
+				article_detail: state => state.ArticleModule.article_detail,
+				tag_list: state => state.ArticleModule.tag_list
 			})
 		},
 		methods: {
@@ -42,13 +47,19 @@
 			}),
 			sync: function () {
 				for (let prop in this.article) {
-					this.article[prop] = this.article_detail[prop]
+					prop === 'content'
+						? this.article[prop] = this.article_detail.draft
+						: this.article[prop] = this.article_detail[prop]
 				}
+				this.selected = this.article_detail.tags.map(tag => {
+					return tag.id
+				})
 			},
 			fetch: function () {
 				const that = this
 				this.getArticleDetail({
 					id: this.$route.params.id,
+					preview: 1,
 					success: function () {
 						that.sync()
 					}

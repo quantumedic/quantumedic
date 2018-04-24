@@ -1,11 +1,12 @@
 <template>
 	<div>
-		<article-tags :article='article'/>
+		<br>
+		<article-tags :tags='article.tags'/>
 	</div>
 </template>
 
 <script>
-	import ArticleTags from '@/components/Article/info/tags'
+	import ArticleTags from '@/components/Tag/info/list'
 
 	export default {
 		props: ['article'],

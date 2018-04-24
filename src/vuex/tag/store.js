@@ -6,7 +6,11 @@ import {
 
 const state = {
 	requesting: false,
-	tag_detail: {},
+	tag_detail: {
+		parents: [],
+		children: [],
+		docs: []
+	},
 	tag_unexistance: false
 }
 

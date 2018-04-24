@@ -1,6 +1,6 @@
 <template>
-	<button class='btn btn-info' @click.prevent='edit' :disabled='editing'>
-		{{editing ? '保存中...' : '保存草稿'}}
+	<button class='btn btn-link' @click.prevent='edit' :disabled='editing'>
+		{{editing ? '发布中...' : '发布文档'}}
 	</button>
 </template>
 
@@ -21,9 +21,12 @@
 			edit: function () {
 				const that = this
 				this.editArticleInfo({
-					info: this.article,
+					info: {
+						...this.article,
+						publish: true
+					},
 					success: function () {
-						that.$emit('update')
+						that.$router.push({name: 'doc', params: {id: that.$route.params.id}})
 					}
 				})
 			}

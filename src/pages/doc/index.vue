@@ -1,14 +1,16 @@
 <template>
-	<div class='panel'>
-		<div class='panel-body'>
-			<article-tags :article='article_detail'/>
-			<hr style="margin-top: 10px">
-			<div class='row'>
-				<div class='col-lg-3 bg-silver'>
-					<article-intro :article='article_detail'/>
-				</div>
-				<div class='col-lg-8 col-lg-offset-1'>
-					<article-main :article='article_detail'/>
+	<div>
+		<article-tags :article='article_detail'/>
+		<div class='panel'>
+			<div class='panel-body'>
+				<br>
+				<div class='row'>
+					<div class='col-lg-3 bg-silver'>
+						<article-intro :article='article_detail'/>
+					</div>
+					<div class='col-lg-8 col-lg-offset-1'>
+						<article-main :article='article_detail'/>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -41,7 +43,8 @@
 			fetch: function () {
 				const that = this
 				this.getArticleDetail({
-					id: this.$route.params.id
+					id: this.$route.params.id,
+					preview: this.$route.query.preview
 				})
 			}
 		},

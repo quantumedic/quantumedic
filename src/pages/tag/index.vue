@@ -1,63 +1,27 @@
 <template>
 	<div class='row'>
 		<div class='col-lg-8'>
-			<div class='panel'>
-				<div class='panel-body'>
-					<p class='small text-muted'>分类标签</p>
-					<h2>{{tag_detail.name}}</h2>
-					<p>{{tag_detail.description}}</p>
-				</div>
-			</div>
-			<div class='panel'>
-				<div class='panel-body'>
-					<div v-for='doc in tag_detail.docs'>
-						<router-link :to='{name: "doc", params: {id: doc._id}}' target='_blank'>
-							<h4 class='text-title'>{{doc.title}}</h4>
-						</router-link>
-						<p class='text-muted'>
-							{{doc.abstract}}
-						</p>
-					</div>
-				</div>
-			</div>
+			<tag-intro :tag='tag_detail'/>
+			<tag-docs :tag='tag_detail' v-if='tag_detail.docs.length > 0'/>
 		</div>
 		<div class='col-lg-4'>
-			<div class='panel'>
-				<div class='panel-body'>
-					<h4 class='text-muted'>父分类</h4>
-					<div>
-						<router-link
-						class='tag'
-						v-for='tag in tag_detail.parents'
-						:key='tag.id'
-						:to='{name: "tag", params: {id: tag.id}}'
-						target="_blank">
-							{{tag.name}}
-						</router-link>
-					</div>
-					<br>
-					<h4 class='text-muted'>子分类</h4>
-					<div>
-						<router-link
-						class='tag'
-						v-for='tag in tag_detail.children'
-						:key='tag.id'
-						:to='{name: "tag", params: {id: tag.id}}'
-						target="_blank">
-							{{tag.name}}
-						</router-link>
-					</div>
-				</div>
-			</div>
-			<p class='text-center text-muted'>{{tag_detail.update_time}}</p>
+			<tag-tree :tag='tag_detail'/>
 		</div>
 	</div>
 </template>
 
 <script>
 	import {mapState, mapActions} from 'vuex'
+	import TagIntro from './_intro'
+	import TagDocs from './_docs'
+	import TagTree from './_tree'
 
 	export default {
+		components: {
+			TagIntro,
+			TagDocs,
+			TagTree
+		},
 		computed: {
 			...mapState({
 				requesting: state => state.TagModule.requesting,
@@ -72,7 +36,11 @@
 			fetch: function () {
 				const that = this
 				this.getTagDetail({
-					id: this.$route.params.id
+					id: this.$route.params.id,
+					success: function () {
+						return true
+					},
+					need_doc: true
 				})
 			}
 		},
