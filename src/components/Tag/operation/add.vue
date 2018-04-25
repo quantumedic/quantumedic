@@ -1,5 +1,5 @@
 <template>
-	<button class='btn btn-link btn-sm'>
+	<router-link class='btn btn-link btn-sm' :to='{name: "add", params: $route.params}'>
 		添加子标签
-	</button>
+	</router-link>
 </template>

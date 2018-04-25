@@ -21,11 +21,3 @@
 		}
 	}
 </script>
-
-<style lang='less' scoped>
-	.login-panel {
-		width: 300px;
-		margin: 0 auto;
-	}
-</style>
-
