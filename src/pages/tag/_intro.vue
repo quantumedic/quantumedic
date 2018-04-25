@@ -5,6 +5,7 @@
 			<hr>
 			<h4>
 				<edit-tag/>
+				<add-tag/>
 				<add-doc/>
 			</h4>
 		</div>
@@ -14,13 +15,15 @@
 <script>
 	import TagDescription from '@/components/Tag/info/description'
 	import EditTag from '@/components/Tag/operation/edit'
+	import AddTag from '@/components/Tag/operation/add'
 	import AddDoc from '@/components/Article/operation/create'
 
 	export default {
 		props: ['tag'],
 		components: {
-			EditTag,
 			TagDescription,
+			EditTag,
+			AddTag,
 			AddDoc
 		}
 	}

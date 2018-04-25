@@ -1,7 +1,7 @@
 <template>
-	<button class='btn btn-info btn-sm' @click.prevent='add'>
+	<button class='btn btn-info btn-sm' @click.prevent='add' style="float: right">
 		<i class='fa fa-book'/>
-		添加文档
+		创建文档
 	</button>
 </template>
 

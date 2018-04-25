@@ -5,7 +5,7 @@
 			<div class='panel-body'>
 				<br>
 				<div class='row'>
-					<div class='col-lg-3 bg-silver'>
+					<div class='col-lg-3'>
 						<article-intro :article='article_detail'/>
 					</div>
 					<div class='col-lg-8 col-lg-offset-1'>

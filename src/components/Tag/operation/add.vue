@@ -1,5 +1,5 @@
 <template>
 	<button class='btn btn-link btn-sm'>
-		编辑标签
+		添加子标签
 	</button>
 </template>

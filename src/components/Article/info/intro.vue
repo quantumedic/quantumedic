@@ -1,5 +1,5 @@
 <template>
-	<div class='doc-intro'>
+	<div class='doc-intro bg-silver'>
 		<h2>
 			{{article.title}}
 
@@ -28,7 +28,7 @@
 
 <style lang='less' scoped>
 	.doc-intro {
-		padding: 20px 0;
+		padding: 20px;
 		margin-bottom: 15px;
 	}
 </style>
