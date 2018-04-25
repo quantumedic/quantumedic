@@ -19,6 +19,7 @@ const mutations = {
 	},
 	[ACCOUNT_SIGN_IN] (state, action) {
 		token.set(action.uid, action.token)
+		console.log(action)
 		state.ifLogged = true
 		state.submitting = false
 	},

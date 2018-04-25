@@ -1,10 +1,12 @@
+import token from './token'
+
 const handler = res => {
 	switch (res.data.code) {
 		case 200:
 			return res
-		case 401:
+		case 404:
 			token.clean()
-			window.location.reload()
+			window.location.href = window.location.origin
 			// deal token err
 			return Promise.reject(res.data.msg)
 		default:

@@ -16,9 +16,6 @@
 		<div class='form-group'>
 			<input type="text" name="" class='form-control' v-model='info.department' placeholder="所属科室 例：血液科">
 		</div>
-		<div class='form-group'>
-			<input type="text" name="" class='form-control' v-model='info.rank_title' placeholder="职称 例：住院医师">
-		</div>
 	</form>
 </template>
 
