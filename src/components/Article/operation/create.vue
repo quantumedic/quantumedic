@@ -17,8 +17,8 @@
 				const that = this
 				this.createNewArticle({
 					tag: this.$route.params.id,
-					success: doc => {
-						that.$router.push({name: 'edit', params: {id: doc.id}})
+					success: id => {
+						that.$router.push({name: 'edit', params: {id: id}})
 					}
 				})
 			}

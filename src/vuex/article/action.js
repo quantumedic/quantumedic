@@ -3,8 +3,8 @@ import * as article from './type'
 
 const createNewArticle = ({commit}, {tag, success}) => {
 	api.createArticle(tag).then(res => {
-		let detail = res.data.result
-		if (success) success(detail)
+		let id = res.data.result
+		if (success) success(id)
 	}, err => {
 		console.log(err)
 	})
