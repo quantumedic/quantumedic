@@ -1,7 +1,7 @@
 <template>
 	<div class='login-panel'>
 		<h2 class='text-center'>
-			添加子标签
+			添加{{$route.params.id === 'root' ? '根' : '子'}}标签
 		</h2>
 		<hr>
 		<tag-form :info='info'/>

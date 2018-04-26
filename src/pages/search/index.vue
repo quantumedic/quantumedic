@@ -17,7 +17,7 @@
 	export default {
 		computed: {
 			...mapState({
-				list: state => state.SearchModule.list
+				list: state => state.SearchModule.doc_list
 			})
 		},
 		methods: {

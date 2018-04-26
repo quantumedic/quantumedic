@@ -10,9 +10,9 @@ const createNewArticle = ({commit}, {tag, success}) => {
 	})
 }
 
-const getArticleDetail = ({commit}, {id, preview, success}) => {
+const getArticleDetail = ({commit}, {id, draft, success}) => {
 	commit(article.REQUESTING_ARITCLE)
-	api.getArticle(id, preview).then(res => {
+	api.getArticle(id, draft).then(res => {
 		let detail = res.data.result
 		commit(article.REQUESTING_ARITCLE_SUCCESS, {
 			detail: detail

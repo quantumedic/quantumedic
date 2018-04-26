@@ -11,8 +11,7 @@ const state = {
 	requesting: false,
 	tag_detail: {
 		parents: [],
-		children: [],
-		docs: []
+		children: []
 	},
 	tag_unexistance: false,
 	submitting_tag: false

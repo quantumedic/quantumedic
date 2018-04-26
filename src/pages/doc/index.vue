@@ -44,7 +44,7 @@
 				const that = this
 				this.getArticleDetail({
 					id: this.$route.params.id,
-					preview: this.$route.query.preview
+					draft: this.$route.query.draft
 				})
 			}
 		},

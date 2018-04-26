@@ -1,11 +1,7 @@
 <template>
-	<div>首页</div>
+	<div>
+		<h4 class='text-center'>
+			<img src="../../assets/logo.png">
+		</h4>
+	</div>
 </template>
-
-<script>
-	export default {
-		mounted () {
-			this.$router.push({name: 'search'})
-		}
-	}
-</script>

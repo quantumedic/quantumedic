@@ -5,5 +5,8 @@ import {
 export default {
 	searchDocs: () => {
 		return SearchResource().get('/docs')
+	},
+	searchTags: () => {
+		return SearchResource().get('/tags')
 	}
 }

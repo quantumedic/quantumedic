@@ -4,8 +4,8 @@ import {
 } from '../interface'
 
 export default {
-	getArticle: (id, preview) => {
-		return ArticleResource().get('', {params: {id: id, preview: preview}})
+	getArticle: (id, draft) => {
+		return ArticleResource().get('', {params: {id: id, draft: draft}})
 	},
 	editArticle: info => {
 		return ArticleResource().put('', info)

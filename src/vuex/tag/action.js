@@ -18,10 +18,9 @@ const getTagDetail = ({commit}, {id, success, need_doc, need_tree}) => {
 const createTag = ({commit}, {info, success}) => {
 	commit(tag.SUBMITTING_TAG)
 	api.createTag(info).then(res => {
-		if (res.data.result === true) {
-			commit(tag.TAG_OPERATION_SUCCESS)
-			if (success) success()
-		}
+		let _tag = res.data.result
+		commit(tag.TAG_OPERATION_SUCCESS)
+		if (success) success(_tag)
 	}, err => {
 		commit(tag.TAG_OPERATION_FAIL, {
 			err: err

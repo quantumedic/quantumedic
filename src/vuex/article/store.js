@@ -12,7 +12,12 @@ import {
 const state = {
 	requesting: false,
 	article_unexistance: false,
-	article_detail: {},
+	article_detail: {
+		author: {},
+		editors: [],
+		tags: [],
+		last_update_author: {}
+	},
 	tag_list: [],
 	editing: false
 }

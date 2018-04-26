@@ -85,7 +85,7 @@
 				const that = this
 				this.getArticleDetail({
 					id: this.$route.params.id,
-					preview: 1,
+					draft: 1,
 					success: function () {
 						that.sync()
 					}

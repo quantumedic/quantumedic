@@ -1,8 +1,10 @@
 <template>
 	<div class="container-fluid navbar-fixed-top handbook-header">
 		<div class='row'>
-			<div class='col-xs-6'>
-				<router-link :to='{name: "home"}'>Handbook</router-link>
+			<div class='col-xs-6 small navbar-menu'>
+				<router-link :to='{name: "home"}'>首页</router-link>
+				<router-link :to='{name: "search"}'>文档</router-link>
+				<router-link :to='{name: "tags"}'>分类</router-link>
 			</div>
 			<div class='col-xs-6 text-right small navbar-menu' v-if='ifLogged'>
 				<router-link :to='{name: "account", params: {tab: "profile"}}'>

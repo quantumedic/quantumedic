@@ -2,10 +2,10 @@
 	<div class='row'>
 		<div class='col-lg-8'>
 			<tag-intro :tag='tag_detail'/>
-			<tag-docs :tag='tag_detail' v-if='tag_detail.docs.length > 0'/>
+			<!-- <tag-docs :tag='tag_detail' v-if='tag_detail.docs.length > 0'/> -->
 		</div>
 		<div class='col-lg-4'>
-			<tag-tree :tag='tag_detail'/>
+			<tag-tree :tag='tag_detail' v-if='tag_detail.parents.length > 0 && tag_detail.children.length > 0'/>
 		</div>
 	</div>
 </template>

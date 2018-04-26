@@ -54,6 +54,11 @@ export default new Router({
 			component: resolve => require(['@/pages/tag/index.vue'], resolve)
 		},
 		{
+			path: '/tags',
+			name: 'tags',
+			component: resolve => require(['@/pages/tag/list.vue'], resolve)
+		},
+		{
 			path: '/add/:id',
 			name: 'add',
 			component: resolve => require(['@/pages/tag/add.vue'], resolve)

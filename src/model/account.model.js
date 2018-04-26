@@ -9,6 +9,7 @@ export const USER_PROFILE_FORM = {
 	hospital: '',
 	department: '',
 	rank_title: '',
+	realname: '',
 	phone: '',
 	credential_number: ''
 }

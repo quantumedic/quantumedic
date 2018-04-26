@@ -22,11 +22,12 @@
 			}),
 			create: function () {
 				const that = this
-				this.info.parent = this.$route.params.id
+				this.info.parent = this.$route.params.id === 'root' ? '' : this.$route.params.id
+				this.info.ifRoot = this.$route.params.id === 'root'
 				this.createTag({
 					info: this.info,
-					success: function () {
-						that.$router.push({name: 'tag', params: that.$route.params})
+					success: function (tag) {
+						that.$router.push({name: 'tag', params: {id: tag.id}})
 					}
 				})
 			}
