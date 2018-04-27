@@ -1,13 +1,6 @@
 <template>
 	<div>
-		<router-link :to='{name: "add", params: {id: "root"}}' class='btn btn-info'>
-			+ 创建根标签
-		</router-link>
-		<hr>
-		<div v-for='tags in list'>
-			<tag-list :tags='tags'/>
-			<hr>
-		</div>
+		<tag-list :tags='list'/>
 	</div>
 </template>
 

@@ -6,7 +6,10 @@ import {
 	EDITING_ARTICLE_SUCCESS,
 	EDITING_ARTICLE_FAIL,
 	REQUESTING_ARITCLE_TAGS,
-	REQUESTING_ARITCLE_TAGS_FAIL
+	REQUESTING_ARITCLE_TAGS_FAIL,
+	COLLECTING_ARTICLE,
+	COLLECTING_ARTICLE_SUCCESS,
+	COLLECTING_ARTICLE_FAIL
 } from './type'
 
 const state = {
@@ -29,11 +32,6 @@ const mutations = {
 	},
 	[REQUESTING_ARITCLE_SUCCESS] (state, action) {
 		state.article_detail = action.detail
-		state.article_detail.tags.forEach(tag => {
-			state.tag_list[tag.level - 1]
-				? state.tag_list[tag.level - 1].push(tag)
-				: state.tag_list[tag.level - 1] = [tag]
-		})
 		state.requesting = false
 		state.article_unexistance = false
 	},
@@ -52,16 +50,20 @@ const mutations = {
 		state.editing = false
 	},
 	[REQUESTING_ARITCLE_TAGS] (state, action) {
-		let _list = []
-		action.list.forEach(tag => {
-			_list[tag.level - 1]
-				? _list[tag.level - 1].push(tag)
-				: _list[tag.level - 1] = [tag]
-		})
-		state.tag_list = Object.assign([], _list)
+		state.tag_list = action.list
 	},
 	[REQUESTING_ARITCLE_TAGS_FAIL] (state, action) {
 		console.log(action.err)
+	},
+	[COLLECTING_ARTICLE] (state, action) {
+		state.collecting = true
+	},
+	[COLLECTING_ARTICLE_SUCCESS] (state, action) {
+		state.article_detail.collected = !state.article_detail.collected
+		state.collecting = false
+	},
+	[COLLECTING_ARTICLE_FAIL] (state, action) {
+		state.collecting = false
 	}
 }
 

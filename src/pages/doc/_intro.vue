@@ -1,19 +1,19 @@
 <template>
 	<div>
 		<article-intro :article='article'/>
-		<article-authors :article='article'/>
+		<collect-article :article='article'/>
 	</div>
 </template>
 
 <script>
 	import ArticleIntro from '@/components/Article/info/intro'
-	import ArticleAuthors from '@/components/Article/info/editors'
+	import CollectArticle from '@/components/Article/operation/collect'
 
 	export default {
 		props: ['article'],
 		components: {
 			ArticleIntro,
-			ArticleAuthors
+			CollectArticle
 		}
 	}
 </script>

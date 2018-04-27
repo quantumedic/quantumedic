@@ -15,5 +15,8 @@ export default {
 	},
 	getArticleTags: (level, ids) => {
 		return TagResource().get('/list', {params: {level: level, ids: ids}})
+	},
+	collectArticle: (id, collected) => {
+		return collected ? ArticleResource().delete('/collect', {params: {id: id}}) : ArticleResource().put('/collect', {id: id})
 	}
 }

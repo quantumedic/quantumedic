@@ -4,8 +4,8 @@
 		<article-reference :article='article'/>
 		<hr>
 		<h2 class='text-right text-info'>
-			<edit-content :article='article'/>
-			<publish-content :article='article'/>
+			<edit-content :article='article' :selects='selects'/>
+			<publish-content :article='article' :selects='selects'/>
 		</h2>
 	</div>
 </template>
@@ -17,7 +17,7 @@
 	import PublishContent from '@/components/Article/operation/publish'
 
 	export default {
-		props: ['article'],
+		props: ['article', 'selects'],
 		components: {
 			ArticleContent,
 			ArticleReference,

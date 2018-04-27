@@ -3,5 +3,6 @@ export const ARTICLE_MODEL = {
 	title: '',
 	abstract: '',
 	content: '',
-	reference: []
+	reference: '',
+	tags: ''
 }

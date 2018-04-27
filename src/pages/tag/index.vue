@@ -2,10 +2,10 @@
 	<div class='row'>
 		<div class='col-lg-8'>
 			<tag-intro :tag='tag_detail'/>
-			<!-- <tag-docs :tag='tag_detail' v-if='tag_detail.docs.length > 0'/> -->
+			<tag-docs :docs='tag_docs' v-if='tag_docs.length > 0'/>
 		</div>
 		<div class='col-lg-4'>
-			<tag-tree :tag='tag_detail' v-if='tag_detail.parents.length > 0 && tag_detail.children.length > 0'/>
+			<tag-tree :tag='tag_detail' v-if='tag_detail.parents.length > 0 || tag_detail.children.length > 0'/>
 		</div>
 	</div>
 </template>
@@ -26,21 +26,24 @@
 			...mapState({
 				requesting: state => state.TagModule.requesting,
 				tag_unexistance: state => state.TagModule.tag_unexistance,
-				tag_detail: state => state.TagModule.tag_detail
+				tag_detail: state => state.TagModule.tag_detail,
+				tag_docs: state => state.TagModule.tag_docs
 			})
 		},
 		methods: {
 			...mapActions({
-				getTagDetail: 'getTagDetail'
+				getTagDetail: 'getTagDetail',
+				getTagDocs: 'getTagDocs'
 			}),
 			fetch: function () {
 				const that = this
 				this.getTagDetail({
 					id: this.$route.params.id,
 					success: function () {
-						return true
-					},
-					need_doc: true
+						that.getTagDocs({
+							id: that.$route.params.id
+						})
+					}
 				})
 			}
 		},

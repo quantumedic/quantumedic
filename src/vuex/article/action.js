@@ -55,11 +55,25 @@ const getArticleTags = ({commit}, {level, ids, success}) => {
 	})
 }
 
+const collectArticle = ({commit}, {id, collected, success}) => {
+	commit(article.COLLECTING_ARTICLE)
+	api.collectArticle(id, collected).then(res => {
+		if (res.data.result === true) {
+			commit(article.COLLECTING_ARTICLE_SUCCESS)
+		}
+	}, err => {
+		commit(article.COLLECTING_ARTICLE_FAIL, {
+			err: err
+		})
+	})
+}
+
 export default {
 	actions: {
 		createNewArticle,
 		getArticleDetail,
 		editArticleInfo,
-		getArticleTags
+		getArticleTags,
+		collectArticle
 	}
 }

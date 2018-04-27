@@ -29,9 +29,39 @@ const searchDocsByCondition = ({commit}) => {
 	})
 }
 
+const searchMyContributions = ({commit}) => {
+	commit(search.SEARCHING_CONTRIBUTIONS)
+	api.searchContributions().then(res => {
+		let list = res.data.result
+		commit(search.SEARCHING_CONTRIBUTIONS_SUCCESS, {
+			list: list
+		})
+	}, err => {
+		commit(search.SEARCHING_CONTRIBUTIONS_FAIL, {
+			err: err
+		})
+	})
+}
+
+const searchMyCollections = ({commit}) => {
+	commit(search.SEARCHING_COLLECTIONS)
+	api.searchCollections().then(res => {
+		let list = res.data.result
+		commit(search.SEARCHING_COLLECTIONS_SUCCESS, {
+			list: list
+		})
+	}, err => {
+		commit(search.SEARCHING_COLLECTIONS_FAIL, {
+			err: err
+		})
+	})
+}
+
 export default {
 	actions: {
 		searchDocsByCondition,
-		getAllTags
+		getAllTags,
+		searchMyContributions,
+		searchMyCollections
 	}
 }

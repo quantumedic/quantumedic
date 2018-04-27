@@ -4,7 +4,7 @@
 			<div class='col-lg-8'>
 				<article-intro :article='article'/>
 				<hr>
-				<article-content :article='article'/>
+				<article-content :article='article' :selects='select_tag'/>
 			</div>
 			<div class='col-lg-4'>
 				<article-tags :selects='select_tag' :tags='tag_list'/>
@@ -55,30 +55,13 @@
 				this.select_tag.selected = this.article_detail.tags.map(tag => {
 					return tag.id
 				})
-				// this.getTags()
-			},
-			check: function (id) {
-				const that = this
-				let exist = false
-				this.tag_list.forEach(group => {
-					if (group) {
-						group.forEach(tag => {
-							if (id == tag.id) exist = true
-						})
-					}
-				})
-				return exist
+				this.article.tags = this.select_tag.selected.join(',')
+				this.getTags()
 			},
 			getTags: function () {
 				const that = this
 				this.getArticleTags({
-					level: this.tag_list.length + 1,
-					ids: this.select_tag.selected.join(','),
-					success: function () {
-						that.select_tag.selected.forEach((id, index) => {
-							if (!that.check(id)) that.select_tag.selected.splice(index, 1)
-						})
-					}
+					level: this.article_detail.tags[0].level
 				})
 			},
 			fetch: function () {
@@ -96,13 +79,7 @@
 			this.fetch()
 		},
 		watch: {
-			'$route': 'fetch',
-			'select_tag.selected': {
-				deep: true,
-				handler: function () {
-					this.getTags()
-				}
-			}
+			'$route': 'fetch'
 		}
 	}
 </script>

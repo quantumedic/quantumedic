@@ -11,8 +11,8 @@
 					<i class='fa fa-user-circle-o'/>
 					{{user_info.username}}
 				</router-link>
-				<a href="">收藏</a>
-				<a href="">我的贡献</a>
+				<router-link :to='{name: "collection"}'>收藏</router-link>
+				<router-link :to='{name: "contribution"}'>我的贡献</router-link>
 				<a @click='logout'>退出</a>
 			</div>
 			<div class='col-xs-6 text-right small navbar-menu' v-else>

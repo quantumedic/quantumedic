@@ -8,7 +8,7 @@
 	import {mapState, mapActions} from 'vuex'
 
 	export default {
-		props: ['article'],
+		props: ['article', 'selects'],
 		computed: {
 			...mapState({
 				editing: state => state.ArticleModule.editing
@@ -29,6 +29,14 @@
 						that.$router.push({name: 'doc', params: {id: that.$route.params.id}})
 					}
 				})
+			}
+		},
+		watch: {
+			'selects': {
+				deep: true,
+				handler: function () {
+					this.article.tags = this.selects.selected.join(',')
+				}
 			}
 		}
 	}

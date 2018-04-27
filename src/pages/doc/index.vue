@@ -1,15 +1,21 @@
 <template>
 	<div>
-		<article-tags :article='article_detail'/>
-		<div class='panel'>
-			<div class='panel-body'>
-				<br>
-				<div class='row'>
-					<div class='col-lg-3'>
+		<div class='row'>
+			<div class='col-lg-8'>
+				<div class='panel'>
+					<div class='panel-body'>
 						<article-intro :article='article_detail'/>
-					</div>
-					<div class='col-lg-8 col-lg-offset-1'>
+						<hr>
 						<article-main :article='article_detail'/>
+						<hr>
+						<article-footer :article='article_detail'/>
+					</div>
+				</div>
+			</div>
+			<div class='col-lg-4'>
+				<div class='panel'>
+					<div class='panel-body'>
+						<article-tags :article='article_detail'/>
 					</div>
 				</div>
 			</div>
@@ -22,12 +28,14 @@
 	import ArticleTags from './_tag'
 	import ArticleIntro from './_intro'
 	import ArticleMain from './_main'
+	import ArticleFooter from './_foot'
 
 	export default {
 		components: {
 			ArticleTags,
 			ArticleIntro,
-			ArticleMain
+			ArticleMain,
+			ArticleFooter
 		},
 		computed: {
 			...mapState({

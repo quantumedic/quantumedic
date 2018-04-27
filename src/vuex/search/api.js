@@ -8,5 +8,11 @@ export default {
 	},
 	searchTags: () => {
 		return SearchResource().get('/tags')
+	},
+	searchContributions: () => {
+		return SearchResource().get('/contributions')
+	},
+	searchCollections: () => {
+		return SearchResource().get('/collections')
 	}
 }

@@ -39,6 +39,16 @@ export default new Router({
 			component: resolve => require(['@/pages/account/index.vue'], resolve)
 		},
 		{
+			path: '/contributions',
+			name: 'contribution',
+			component: resolve => require(['@/pages/contribution/index.vue'], resolve)
+		},
+		{
+			path: '/collections',
+			name: 'collection',
+			component: resolve => require(['@/pages/collection/index.vue'], resolve)
+		},
+		{
 			path: '/edit/:id',
 			name: 'edit',
 			component: resolve => require(['@/pages/edit/index.vue'], resolve)

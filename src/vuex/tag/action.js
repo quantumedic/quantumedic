@@ -1,15 +1,30 @@
 import api from './api'
 import * as tag from './type'
 
-const getTagDetail = ({commit}, {id, success, need_doc, need_tree}) => {
+const getTagDetail = ({commit}, {id, success}) => {
 	commit(tag.REQUESTING_TAG)
-	api.getTagInfo(id, need_doc, need_tree).then(res => {
+	api.getTagInfo(id).then(res => {
 		let detail = res.data.result
 		commit(tag.REQUESTING_TAG_SUCCESS, {
 			detail: detail
 		})
+		if (success) success()
 	}, err => {
 		commit(tag.REQUESTING_TAG_FAIL, {
+			err: err
+		})
+	})
+}
+
+const getTagDocs = ({commit}, {id, success}) => {
+	commit(tag.REQUESTING_TAG_DOCS)
+	api.getTagDocs(id).then(res => {
+		let list = res.data.result
+		commit(tag.REQUESTING_TAG_DOCS_SUCCESS, {
+			list: list
+		})
+	}, err => {
+		commit(tag.REQUESTING_TAG_DOCS_FAIL, {
 			err: err
 		})
 	})
@@ -31,6 +46,7 @@ const createTag = ({commit}, {info, success}) => {
 export default {
 	actions: {
 		getTagDetail,
+		getTagDocs,
 		createTag
 	}
 }

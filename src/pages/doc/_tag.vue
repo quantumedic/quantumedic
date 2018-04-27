@@ -1,6 +1,9 @@
 <template>
 	<div>
-		<br>
+		<p>
+			所属标签
+		</p>
+		<hr>
 		<article-tags :tags='article.tags'/>
 	</div>
 </template>

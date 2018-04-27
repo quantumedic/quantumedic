@@ -1,11 +1,9 @@
 <template>
 	<div class='panel'>
 		<div class='panel-body'>
-			<div v-for='(group, index) in tags' v-if='group && group.length > 0'>
-				<p class='text-muted'>LEVEL {{index + 1}}</p>
-				<tag-list :tags='group' :selects='selects'/>
-			</div>
-			<!-- <get-tags/> -->
+			<p>管理标签</p>
+			<hr>
+			<tag-list :tags='tags' :selects='selects'/>
 		</div>
 	</div>
 </template>

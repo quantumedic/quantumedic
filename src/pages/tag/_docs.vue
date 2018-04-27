@@ -1,7 +1,7 @@
 <template>
 	<div class='panel'>
 		<div class='panel-body'>
-			<tag-docs :docs='tag.docs'/>
+			<tag-docs :docs='docs'/>
 		</div>
 	</div>
 </template>
@@ -10,7 +10,7 @@
 	import TagDocs from '@/components/Article/info/list'
 
 	export default {
-		props: ['tag'],
+		props: ['docs'],
 		components: {
 			TagDocs
 		}
