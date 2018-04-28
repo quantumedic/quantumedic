@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<div class='row'>
+		<loading v-if='requesting'/>
+		<div class='row' v-if='!requesting && !article_unexistance'>
 			<div class='col-lg-8'>
 				<div class='panel'>
 					<div class='panel-body'>
@@ -20,11 +21,15 @@
 				</div>
 			</div>
 		</div>
+		<p class='text-center text-muted' v-if='!requesting && article_unexistance'>
+			喔~你要找的文档好像没有哦
+		</p>
 	</div>
 </template>
 
 <script>
 	import {mapState, mapActions} from 'vuex'
+	import Loading from '@/components/Common/loading'
 	import ArticleTags from './_tag'
 	import ArticleIntro from './_intro'
 	import ArticleMain from './_main'
@@ -32,6 +37,7 @@
 
 	export default {
 		components: {
+			Loading,
 			ArticleTags,
 			ArticleIntro,
 			ArticleMain,
