@@ -1,5 +1,5 @@
 <template>
-	<button class='btn btn-info btn-sm' @click.prevent='add' style="float: right">
+	<button class='btn btn-info btn-sm' @click.prevent='add' style="float: right;margin-right: 15px">
 		<i class='fa fa-book'/>
 		创建文档
 	</button>

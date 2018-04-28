@@ -7,7 +7,10 @@ import {
 	REQUESTING_TAG_DOCS_FAIL,
 	SUBMITTING_TAG,
 	TAG_OPERATION_SUCCESS,
-	TAG_OPERATION_FAIL
+	TAG_OPERATION_FAIL,
+	FAVORING_TAG,
+	FAVORING_TAG_SUCCESS,
+	FAVORING_TAG_FAIL
 } from './type'
 
 const state = {
@@ -19,7 +22,8 @@ const state = {
 	tag_unexistance: false,
 	requesting_docs: false,
 	tag_docs: [],
-	submitting_tag: false
+	submitting_tag: false,
+	favoring: false
 }
 
 const mutations = {
@@ -54,6 +58,16 @@ const mutations = {
 	},
 	[TAG_OPERATION_FAIL] (state, action) {
 		state.submitting_tag = false
+	},
+	[FAVORING_TAG] (state, action) {
+		state.favoring = true
+	},
+	[FAVORING_TAG_SUCCESS] (state, action) {
+		state.tag_detail.favored = !state.tag_detail.favored
+		state.favoring = false
+	},
+	[FAVORING_TAG_FAIL] (state, action) {
+		state.favoring = false
 	}
 }
 

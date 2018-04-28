@@ -43,10 +43,24 @@ const createTag = ({commit}, {info, success}) => {
 	})
 }
 
+const favorTag = ({commit}, {id, favored}) => {
+	commit(tag.FAVORING_TAG)
+	api.favorTag(id, favored).then(res => {
+		if (res.data.result === true) {
+			commit(tag.FAVORING_TAG_SUCCESS)
+		}
+	}, err => {
+		commit(tag.FAVORING_TAG_FAIL, {
+			err: err
+		})
+	})
+}
+
 export default {
 	actions: {
 		getTagDetail,
 		getTagDocs,
-		createTag
+		createTag,
+		favorTag
 	}
 }

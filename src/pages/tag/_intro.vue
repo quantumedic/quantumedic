@@ -6,6 +6,7 @@
 			<h4>
 				<edit-tag/>
 				<add-tag/>
+				<favor-tag :tag='tag'/>
 				<add-doc/>
 			</h4>
 		</div>
@@ -16,6 +17,7 @@
 	import TagDescription from '@/components/Tag/info/description'
 	import EditTag from '@/components/Tag/operation/edit'
 	import AddTag from '@/components/Tag/operation/add'
+	import FavorTag from '@/components/Tag/operation/favor'
 	import AddDoc from '@/components/Article/operation/create'
 
 	export default {
@@ -24,6 +26,7 @@
 			TagDescription,
 			EditTag,
 			AddTag,
+			FavorTag,
 			AddDoc
 		}
 	}
