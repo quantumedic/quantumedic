@@ -5,6 +5,7 @@
 			<div class='col-lg-8'>
 				<tag-intro :tag='tag_detail'/>
 				<tag-docs :docs='tag_docs' v-if='tag_docs.length > 0'/>
+				<br>
 			</div>
 			<div class='col-lg-4'>
 				<tag-tree :tag='tag_detail' v-if='tag_detail.parents.length > 0 || tag_detail.children.length > 0'/>
