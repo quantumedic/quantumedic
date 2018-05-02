@@ -8,5 +8,8 @@ export default {
 	},
 	getUserAuth: info => {
 		return AccountResource().post('/login', info)
+	},
+	logoutUser: () => {
+		return AccountResource().post('/logout')
 	}
 }

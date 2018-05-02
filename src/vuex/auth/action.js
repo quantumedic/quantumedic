@@ -27,8 +27,15 @@ const signin = ({commit}, {info, success}) => {
 }
 
 const signout = ({commit}, success) => {
-	commit(auth.ACCOUNT_SIGN_OUT)
-	if (success) success()
+	api.logoutUser().then(res => {
+		if (res.data.result === true) {
+			commit(auth.ACCOUNT_SIGN_OUT)
+			if (success) success()
+		}
+	}, err => {
+		console.log(err)
+	})
+	
 }
 
 export default {
