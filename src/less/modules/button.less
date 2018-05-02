@@ -2,6 +2,21 @@ button {
 	outline: none !important;
 }
 
+.btn {
+	border-radius: 0;
+	transition: all .3s ease;
+	&-danger {
+		background-color: #E57453;
+		border-color: #E57453;
+	}
+	&-link {
+		color: #0086AD;
+		&:hover {
+			color: #0086AD;
+		}
+	}
+}
+
 .pointer {
 	cursor: pointer;
 	opacity: .9;

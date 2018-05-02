@@ -28,6 +28,7 @@ const state = {
 
 const mutations = {
 	[REQUESTING_TAG] (state, action) {
+		state.tag_docs = []
 		state.requesting = true
 		state.tag_unexistance = false
 	},

@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<article-intro :article='article'/>
-		<collect-article :article='article'/>
+		<div class='text-right'>
+			<collect-article :article='article'/>
+		</div>
 	</div>
 </template>
 

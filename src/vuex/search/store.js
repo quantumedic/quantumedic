@@ -15,7 +15,10 @@ import {
 
 const state = {
 	searching: false,
-	doc_list: [],
+	search_result: {
+		docs: [],
+		tags: []
+	},
 	tag_list: [],
 	contribution_list: [],
 	collection_list: []
@@ -26,7 +29,7 @@ const mutations = {
 		state.searching = true
 	},
 	[SEARCHING_DOCS_SUCCESS] (state, action) {
-		state.doc_list = action.list
+		state.search_result = action.list
 		state.searching = false
 	},
 	[SEARCHING_DOCS_FAIL] (state, action) {

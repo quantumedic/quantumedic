@@ -3,8 +3,8 @@ import {
 } from '../interface'
 
 export default {
-	searchDocs: () => {
-		return SearchResource().get('/docs')
+	searchDocs: keyword => {
+		return SearchResource().get('/docs', {params: {keyword: keyword}})
 	},
 	searchTags: () => {
 		return SearchResource().get('/tags')

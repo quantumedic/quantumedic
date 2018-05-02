@@ -15,9 +15,9 @@ const getAllTags = ({commit}) => {
 	})
 }
 
-const searchDocsByCondition = ({commit}) => {
+const searchDocsByCondition = ({commit}, {keyword}) => {
 	commit(search.SEARCHING_DOCS)
-	api.searchDocs().then(res => {
+	api.searchDocs(keyword).then(res => {
 		let list = res.data.result
 		commit(search.SEARCHING_DOCS_SUCCESS, {
 			list: list

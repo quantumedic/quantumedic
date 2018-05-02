@@ -1,9 +1,5 @@
 <template>
-	<div class='panel'>
-		<div class='panel-body'>
-			<tag-docs :docs='docs'/>
-		</div>
-	</div>
+	<tag-docs :docs='docs'/>
 </template>
 
 <script>

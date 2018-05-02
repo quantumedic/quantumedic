@@ -1,23 +1,36 @@
 <template>
-	<div>
-		<div v-for='doc in list'>
-			<router-link :to='{name: "doc", params: {id: doc.id}}' target='_blank'>
-				<h4 class='text-title'>{{doc.title}}</h4>
-			</router-link>
-			<p>{{doc.abstract}}</p>
-			<p class='text-muted text-right small'>{{doc.update_time}}</p>
-			<hr>
+	<div class='row'>
+		<div class='col-lg-9'>
+			<search-bar :info='info'/>
+			<search-result :docs='docs' :tags='tags'/>
+		</div>
+		<div class='col-lg-3'>
+			<navigation-menu/>
 		</div>
 	</div>
 </template>
 
 <script>
 	import {mapState, mapActions} from 'vuex'
+	import SearchResult from './_result'
+	import SearchBar from '@/components/Search/form/keyword'
+	import NavigationMenu from '@/components/Navigation/menu'
 
 	export default {
+		components: {
+			SearchBar,
+			SearchResult,
+			NavigationMenu
+		},
+		data () {
+			return {
+				info: {keyword: ''}
+			}
+		},
 		computed: {
 			...mapState({
-				list: state => state.SearchModule.doc_list
+				docs: state => state.SearchModule.search_result.docs,
+				tags: state => state.SearchModule.search_result.tags
 			})
 		},
 		methods: {
@@ -25,11 +38,22 @@
 				searchDocsByCondition: 'searchDocsByCondition'
 			}),
 			search: function () {
-				this.searchDocsByCondition()
+				this.info.keyword = this.$route.query.keyword
+				this.searchDocsByCondition({
+					keyword: this.info.keyword
+				})
 			}
 		},
 		created () {
 			this.search()
+		},
+		watch: {
+			'$route.query': {
+				deep: true,
+				handler: function () {
+					this.search()
+				}
+			}
 		}
 	}
 </script>
