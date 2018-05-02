@@ -15,7 +15,7 @@
 				<router-link :to='{name: "contribution"}'>我的贡献</router-link>
 				<a @click='logout'>退出</a>
 			</div>
-			<div class='col-xs-6 text-right small navbar-menu' v-else>
+			<div class='col-xs-9 text-right small navbar-menu' v-else>
 				<router-link :to='{name: "account", params: {tab: "login"}}'>
 					登录/注册
 				</router-link>
