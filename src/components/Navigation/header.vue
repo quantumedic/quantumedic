@@ -1,12 +1,12 @@
 <template>
 	<div class="container-fluid navbar-fixed-top handbook-header">
 		<div class='row'>
-			<div class='col-xs-6 small navbar-menu'>
+			<div class='col-xs-3 small navbar-menu'>
 				<router-link :to='{name: "home"}'>首页</router-link>
-				<router-link :to='{name: "search"}'>文档</router-link>
-				<router-link :to='{name: "tags"}'>分类</router-link>
+				<!-- <router-link :to='{name: "search"}'>文档</router-link> -->
+				<!-- <router-link :to='{name: "tags"}'>分类</router-link> -->
 			</div>
-			<div class='col-xs-6 text-right small navbar-menu' v-if='ifLogged'>
+			<div class='col-xs-9 text-right small navbar-menu' v-if='ifLogged'>
 				<router-link :to='{name: "account", params: {tab: "profile"}}'>
 					<i class='fa fa-user-circle-o'/>
 					{{user_info.username}}
@@ -62,8 +62,13 @@
 
 <style lang='less' scoped>
 	.handbook-header {
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		background-color: #C5E4Ed;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
 		.navbar-menu a {
 			margin-left: 10px;
 		}

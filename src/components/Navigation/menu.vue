@@ -2,7 +2,7 @@
 	<div class='panel'>
 		<div class='panel-body'>
 			<div class='row'>
-				<div class='col-md-4' v-for='route in routes'>
+				<div class='col-xs-4' v-for='route in routes'>
 					<router-link :to='{name: route.name}' :style='{color: route.color}'>
 						<h2 class='text-center'>
 							<i :class='["fa fa-" + route.icon]'/>

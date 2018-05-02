@@ -3,6 +3,7 @@
 		<div class='col-lg-9'>
 			<search-bar :info='info'/>
 			<search-result :docs='docs' :tags='tags'/>
+			<br>
 		</div>
 		<div class='col-lg-3'>
 			<navigation-menu/>
