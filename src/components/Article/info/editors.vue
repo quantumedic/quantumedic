@@ -6,9 +6,9 @@
 			&nbsp;|&nbsp;
 			参与编辑：
 			<a v-for='editor in article.editors'>
-				{{editor.username}}&nbsp;
+				{{editor.username}}
 			</a>
-			&nbsp;|&nbsp;
+			<br>
 			最后编辑：
 			<a v-if='article.last_update_author'>{{article.last_update_author.username}}</a>
 			&nbsp;
