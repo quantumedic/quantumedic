@@ -18,5 +18,8 @@ export default {
 	},
 	collectArticle: (id, collected) => {
 		return collected ? ArticleResource().delete('/collect', {params: {id: id}}) : ArticleResource().put('/collect', {id: id})
+	},
+	deleteArticle: id => {
+		return ArticleResource().delete('', {params: {id: id}})
 	}
 }

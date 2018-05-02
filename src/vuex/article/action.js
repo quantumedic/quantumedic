@@ -68,12 +68,27 @@ const collectArticle = ({commit}, {id, collected, success}) => {
 	})
 }
 
+const removeArticle = ({commit}, {id, success}) => {
+	commit(article.REMOVING_ARTICLE)
+	api.deleteArticle(id).then(res => {
+		if (res.data.result === true) {
+			commit(article.REMOVING_ARTICLE_SUCCESS)
+			if (success) success()
+		}
+	}, err => {
+		commit(article.REMOVING_ARTICLE_FAIL, {
+			err: err
+		})
+	})
+}
+
 export default {
 	actions: {
 		createNewArticle,
 		getArticleDetail,
 		editArticleInfo,
 		getArticleTags,
-		collectArticle
+		collectArticle,
+		removeArticle
 	}
 }

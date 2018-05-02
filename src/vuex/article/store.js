@@ -9,7 +9,10 @@ import {
 	REQUESTING_ARITCLE_TAGS_FAIL,
 	COLLECTING_ARTICLE,
 	COLLECTING_ARTICLE_SUCCESS,
-	COLLECTING_ARTICLE_FAIL
+	COLLECTING_ARTICLE_FAIL,
+	REMOVING_ARTICLE,
+	REMOVING_ARTICLE_SUCCESS,
+	REMOVING_ARTICLE_FAIL
 } from './type'
 
 const state = {
@@ -22,7 +25,8 @@ const state = {
 		last_update_author: {}
 	},
 	tag_list: [],
-	editing: false
+	editing: false,
+	removing: false
 }
 
 const mutations = {
@@ -64,6 +68,15 @@ const mutations = {
 	},
 	[COLLECTING_ARTICLE_FAIL] (state, action) {
 		state.collecting = false
+	},
+	[REMOVING_ARTICLE] (state, action) {
+		state.removing = true
+	},
+	[REMOVING_ARTICLE_SUCCESS] (state, action) {
+		state.removing = false
+	},
+	[REMOVING_ARTICLE_FAIL] (state, action) {
+		state.removing = false
 	}
 }
 
