@@ -1,8 +1,9 @@
 <template>
 	<div class='row'>
 		<div class='col-md-8 col-md-offset-2'>
+			<br><br>
 			<h4 class='text-center'>
-				<img src="../../assets/logo.png">
+				<img src="../../assets/logo.png" height="96">
 			</h4>
 			<search-bar :info='info'/>
 		</div>

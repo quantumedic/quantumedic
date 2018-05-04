@@ -10,7 +10,10 @@ import {
 	TAG_OPERATION_FAIL,
 	FAVORING_TAG,
 	FAVORING_TAG_SUCCESS,
-	FAVORING_TAG_FAIL
+	FAVORING_TAG_FAIL,
+	REQUESTING_TAGS,
+	REQUESTING_TAGS_SUCCESS,
+	REQUESTING_TAGS_FAIL
 } from './type'
 
 const state = {
@@ -23,7 +26,8 @@ const state = {
 	requesting_docs: false,
 	tag_docs: [],
 	submitting_tag: false,
-	favoring: false
+	favoring: false,
+	parent_tags: []
 }
 
 const mutations = {
@@ -69,6 +73,17 @@ const mutations = {
 	},
 	[FAVORING_TAG_FAIL] (state, action) {
 		state.favoring = false
+	},
+	[REQUESTING_TAGS] (state, action) {
+		state.parent_tags = []
+		state.requesting = true
+	},
+	[REQUESTING_TAGS_SUCCESS] (state, action) {
+		state.parent_tags = action.list
+		state.requesting = false
+	},
+	[REQUESTING_TAGS_FAIL] (state, action) {
+		state.requesting = false
 	}
 }
 

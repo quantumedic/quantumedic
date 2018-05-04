@@ -1,6 +1,6 @@
 <template>
 	<h2 class='text-right text-info'>
-		<button class='btn-clean' @click.prevent='create' :disabled='submitting'>
+		<button class='btn-clean' @click.prevent='save' :disabled='submitting'>
 			<i class='fa fa-arrow-circle-right pointer'/>
 		</button>
 	</h2>
@@ -10,7 +10,7 @@
 	import {mapState, mapActions} from 'vuex'
 
 	export default {
-		props: ['info'],
+		props: ['info', 'selects'],
 		computed: {
 			...mapState({
 				submitting: state => state.TagModule.submitting
@@ -18,16 +18,15 @@
 		},
 		methods: {
 			...mapActions({
-				createTag: 'createTag'
+				modifyTag: 'modifyTag'
 			}),
-			create: function () {
+			save: function () {
 				const that = this
-				this.info.parent = this.$route.params.id === 'root' ? '' : this.$route.params.id
-				this.info.ifRoot = this.$route.params.id === 'root'
-				this.createTag({
+				this.info.parents = this.selects.selected.join(',')
+				this.modifyTag({
 					info: this.info,
-					success: function (tag) {
-						that.$router.push({name: 'tag', params: {id: tag.id}})
+					success: function () {
+						that.$router.push({name: 'tag', params: {id: that.$route.params.id}})
 					}
 				})
 			}
