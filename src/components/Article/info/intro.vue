@@ -3,7 +3,10 @@
 		<h2>
 			{{article.title}}
 
-			<router-link :to='{name: "edit", params: $route.params}' class='small' v-if='user_info.type == "editor"'>
+			<router-link
+			:to='{name: "edit", params: $route.params}'
+			class='small'
+			v-if='user_info.type == "editor" || user_info.type == "admin"'>
 				<i class='fa fa-pencil'/>
 			</router-link>
 		</h2>
