@@ -1,6 +1,6 @@
-# quantumedic
+# Yeejuan Website
 
-> quantumedic handbook of residents front-end
+> yeejuan.com front-end website
 
 ## Build Setup
 
